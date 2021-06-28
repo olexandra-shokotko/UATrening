@@ -5,23 +5,25 @@ public class Model {
     private int value;
     public ArrayList<Integer> values = new ArrayList<Integer>();
     private int randNumber;
-    private int minStart = 0;
-    private int maxStart = 10;
-    private int minCur = minStart;
-    private int maxCur = maxStart;
-
-    public int getValue() {
-        return value;
-    }
+    private int minValue = 0;
+    private int maxValue = 10;
 
     public void setValue(int value) {
         this.value = value;
-        values.add(new Integer(value));
+        values.add(value);
+    }
+
+    public int getMinValue() {
+        return minValue;
+    }
+
+    public int getMaxValue() {
+        return maxValue;
     }
 
     public void initRandNumber() {
         Random random = new Random();
-        randNumber = random.nextInt(maxStart - minStart) + minStart;
+        randNumber = random.nextInt(maxValue - minValue) + minValue;
     }
 
     public int getRandNumber() {
@@ -29,22 +31,10 @@ public class Model {
     }
 
     public boolean isGuessed() {
-        if (value != randNumber) {
-            if (value < randNumber) {
-                maxCur = value - 1;
-            }
-            minCur = value;
-            return false;
-        }
-        return true;
+        return value == randNumber;
     }
 
-    public boolean isNeededGreater()
-    {
-        if (value < randNumber)
-        {
-            return true;
-        }
-        return false;
+    public boolean isNeededGreater() {
+        return value < randNumber;
     }
 }

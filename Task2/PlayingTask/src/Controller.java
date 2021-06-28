@@ -12,7 +12,7 @@ public class Controller {
     public void processUser() {
         Scanner sc = new Scanner(System.in);
 
-        view.printMessage(View.INTRODUCTION);
+        view.printRangeInfo(model.getMinValue(), model.getMaxValue());
         model.initRandNumber();
 
 
@@ -23,10 +23,11 @@ public class Controller {
             } else {
                 view.printMessage(View.NOT_GUESSED_NEED_LESS);
             }
-            view.printMessageAndPrevInputs(View.PREVIOUS_INPUTS, model.values);
+            view.printPrevInputsInfo(model.values);
             model.setValue(inputIntValueWithScanner(sc));
         }
         view.printMessage(View.GUESSED);
+        view.printStatistics(model.getRandNumber(), model.values);
     }
 
     public int inputIntValueWithScanner(Scanner sc) {
