@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Model {
     private int value;
+    public ArrayList<Integer> values = new ArrayList<Integer>();
     private int randNumber;
     private int minStart = 0;
     private int maxStart = 10;
@@ -14,6 +16,7 @@ public class Model {
 
     public void setValue(int value) {
         this.value = value;
+        values.add(new Integer(value));
     }
 
     public void initRandNumber() {

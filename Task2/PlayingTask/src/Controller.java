@@ -23,6 +23,7 @@ public class Controller {
             } else {
                 view.printMessage(View.NOT_GUESSED_NEED_LESS);
             }
+            view.printMessageAndPrevInputs(View.PREVIOUS_INPUTS, model.values);
             model.setValue(inputIntValueWithScanner(sc));
         }
         view.printMessage(View.GUESSED);
