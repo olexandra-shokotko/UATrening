@@ -1,3 +1,5 @@
+package PlayingTask;
+
 import java.util.Scanner;
 
 public class Controller {
@@ -23,11 +25,11 @@ public class Controller {
             } else {
                 view.printMessage(View.NOT_GUESSED_NEED_LESS);
             }
-            view.printPrevInputsInfo(model.values);
+            view.printPrevInputsInfo(model.getValues());
             model.setValue(inputIntValueWithScanner(sc));
         }
         view.printMessage(View.GUESSED);
-        view.printStatistics(model.getRandNumber(), model.values);
+        view.printStatistics(model.getRandNumber(), model.getValues());
     }
 
     public int inputIntValueWithScanner(Scanner sc) {

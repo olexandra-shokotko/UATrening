@@ -1,9 +1,11 @@
+package PlayingTask;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Model {
     private int value;
-    public ArrayList<Integer> values = new ArrayList<Integer>();
+    private ArrayList<Integer> values = new ArrayList<Integer>();
     private int randNumber;
     private int minValue = 0;
     private int maxValue = 10;
@@ -11,6 +13,14 @@ public class Model {
     public void setValue(int value) {
         this.value = value;
         values.add(value);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public ArrayList<Integer> getValues() {
+        return values;
     }
 
     public int getMinValue() {
