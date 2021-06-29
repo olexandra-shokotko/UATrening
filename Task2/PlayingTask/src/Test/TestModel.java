@@ -23,7 +23,7 @@ public class TestModel {
     @Test
     public void testGetMaxValue(){
         Model model = new Model();
-        Assert.assertEquals(10, model.getMaxValue());
+        Assert.assertEquals(100, model.getMaxValue());
     }
 
     @Test

@@ -8,7 +8,7 @@ public class Model {
     private ArrayList<Integer> values = new ArrayList<Integer>();
     private int randNumber;
     private int minValue = 0;
-    private int maxValue = 10;
+    private int maxValue = 100;
 
     public void setValue(int value) {
         this.value = value;
