@@ -1,42 +1,55 @@
 package Test;
 
 import PlayingTask.Model;
+import PlayingTask.GlobalConstants;
 import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestModel {
-    @Test
-    public void testSetValue(){
-        Model model = new Model();
-        model.setValue(5);
-        Assert.assertEquals(5, model.getValue());
-        Integer[] expected = {5};
-        Assert.assertArrayEquals(expected, model.getValues().toArray());
+    private static Model model;
+
+    @BeforeClass
+    public static void runT() {
+        model = new Model();
     }
 
     @Test
-    public void testGetMinValue(){
-        Model model = new Model();
-        Assert.assertEquals(0, model.getMinValue());
+    public void testGetMinValue() {
+        model.setPrimaryBarrier(GlobalConstants.PRIMARY_MIN_BARRIER, GlobalConstants.PRIMARY_MAX_BARRIER);
+        Assert.assertEquals(GlobalConstants.PRIMARY_MIN_BARRIER, model.getMinValue());
     }
 
     @Test
-    public void testGetMaxValue(){
-        Model model = new Model();
-        Assert.assertEquals(100, model.getMaxValue());
+    public void testGetMaxValue() {
+        model.setPrimaryBarrier(GlobalConstants.PRIMARY_MIN_BARRIER, GlobalConstants.PRIMARY_MAX_BARRIER);
+        Assert.assertEquals(GlobalConstants.PRIMARY_MAX_BARRIER, model.getMaxValue());
     }
 
     @Test
-    public void testInitRandNumber(){
-        Model model = new Model();
+    public void testInitRandNumber() {
         model.initRandNumber();
         Assert.assertTrue(model.getRandNumber() >= model.getMinValue() ||
                 model.getRandNumber() <= model.getMaxValue());
     }
 
     @Test
-    public void testIsGuessed(){
-        Model model = new Model();
+    public void testSetValue() {
+        model.setValue(5);
+        Assert.assertEquals(5, model.getValue());
+        Assert.assertEquals(5, (int) model.getValues().get(model.getValues().size() - 1));
+    }
+
+    @Test
+    public void testSetPrimaryBarrier() {
+        model.setPrimaryBarrier(0, 100);
+        Assert.assertEquals(0, model.getMinValue());
+        Assert.assertEquals(100, model.getMaxValue());
+    }
+
+    @Test
+    public void testIsGuessed() {
         model.initRandNumber();
         model.setValue(model.getRandNumber());
         Assert.assertTrue(model.isGuessed());
@@ -45,8 +58,7 @@ public class TestModel {
     }
 
     @Test
-    public void testIsNeededGreater(){
-        Model model = new Model();
+    public void testIsNeededGreater() {
         model.initRandNumber();
         model.setValue(model.getRandNumber() - 1);
         Assert.assertTrue(model.isNeededGreater());

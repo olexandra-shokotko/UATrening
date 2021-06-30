@@ -6,6 +6,7 @@ public class View {
     public static final String INTRODUCTION = "Game: guess the number in range from %d to %d\n";
     public static final String INPUT_INT_DATA = "Input integer number = ";
     public static final String WRONG_INPUT_DATA = "Wrong input! Repeat please! Input ONLY integer values.";
+    public static final String WRONG_INPUT_DATA_RANGE = "Wrong input! Repeat please! Input values in range from %d to %d.";
     public static final String NOT_GUESSED_NEED_GREATER = "No! Greater";
     public static final String NOT_GUESSED_NEED_LESS = "No! Less";
     public static final String GUESSED = "Yes!!! You guessed!";
@@ -19,8 +20,8 @@ public class View {
         System.out.println(message);
     }
 
-    public void printRangeInfo(int min, int max) {
-        System.out.format(INTRODUCTION, min, max);
+    public void printRangeInfo(String message, int min, int max) {
+        System.out.format(message, min, max);
     }
 
     public void printPrevInputsInfo(ArrayList<Integer> inputs) {

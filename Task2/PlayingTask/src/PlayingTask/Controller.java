@@ -14,7 +14,9 @@ public class Controller {
     public void processUser() {
         Scanner sc = new Scanner(System.in);
 
-        view.printRangeInfo(model.getMinValue(), model.getMaxValue());
+        model.setPrimaryBarrier(GlobalConstants.PRIMARY_MIN_BARRIER, GlobalConstants.PRIMARY_MAX_BARRIER);
+
+        view.printRangeInfo(View.INTRODUCTION, model.getMinValue(), model.getMaxValue());
         model.initRandNumber();
 
 
@@ -33,12 +35,23 @@ public class Controller {
     }
 
     public int inputIntValueWithScanner(Scanner sc) {
+        int res = 0;
         view.printMessage(View.INPUT_INT_DATA);
 
-        while (!sc.hasNextInt()) {
-            view.printMessage(View.WRONG_INPUT_DATA + "\n" + View.INPUT_INT_DATA);
-            sc.next();
+        while (true) {
+            while (!sc.hasNextInt()) {
+                view.printMessage(View.WRONG_INPUT_DATA + "\n" + View.INPUT_INT_DATA);
+                sc.next();
+            }
+
+            if ((res = sc.nextInt()) <= model.getMinValue() ||
+                    res >= model.getMaxValue()) {
+                view.printRangeInfo(View.WRONG_INPUT_DATA_RANGE, model.getMinValue(), model.getMaxValue());
+                view.printMessage("\n" + View.INPUT_INT_DATA);
+                continue;
+            }
+            break;
         }
-        return sc.nextInt();
+        return res;
     }
 }

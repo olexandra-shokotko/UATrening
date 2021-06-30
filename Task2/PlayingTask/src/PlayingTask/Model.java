@@ -1,14 +1,13 @@
 package PlayingTask;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Model {
     private int value;
     private ArrayList<Integer> values = new ArrayList<Integer>();
     private int randNumber;
-    private int minValue = 0;
-    private int maxValue = 100;
+    private int minValue;
+    private int maxValue;
 
     public void setValue(int value) {
         this.value = value;
@@ -32,16 +31,27 @@ public class Model {
     }
 
     public void initRandNumber() {
-        Random random = new Random();
-        randNumber = random.nextInt(maxValue - minValue) + minValue;
+        randNumber = (int) Math.ceil(Math.random() * (maxValue - minValue - 1) + minValue);
     }
 
     public int getRandNumber() {
         return randNumber;
     }
 
+    public void setPrimaryBarrier(int minValue, int maxValue) {
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+    }
+
     public boolean isGuessed() {
-        return value == randNumber;
+        if (value == randNumber) {
+            return true;
+        } else if (value > randNumber) {
+            maxValue = value;
+        } else {
+            minValue = value;
+        }
+        return false;
     }
 
     public boolean isNeededGreater() {
