@@ -1,5 +1,6 @@
 package Task3.controller;
 
+import Task3.model.Notebook;
 import Task3.view.View;
 
 import java.util.Scanner;
@@ -14,8 +15,10 @@ public class Controller {
 
     public void processUser() {
         Scanner sc = new Scanner(System.in);
-        InputPerson inputNoteNoteBook = new InputPerson(view, sc);
-        inputNoteNoteBook.inputPerson();
+        Notebook notebook = new Notebook();
+        InputPerson inputPerson = new InputPerson(view, sc, notebook);
+        inputPerson.inputPerson();
+        inputPerson.addPersonToNotebook();
     }
 
     String inputStringValueWithScanner(String message, String regex) {
