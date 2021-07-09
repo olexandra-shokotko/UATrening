@@ -17,8 +17,7 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
         Notebook notebook = new Notebook();
         InputPerson inputPerson = new InputPerson(view, sc, notebook);
-        inputPerson.inputPerson();
-        inputPerson.addPersonToNotebook();
+        inputPerson.process();
     }
 
     String inputStringValueWithScanner(String message, String regex) {

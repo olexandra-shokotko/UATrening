@@ -1,5 +1,6 @@
 package Task3.controller;
 
+import Task3.model.ExistingLoginException;
 import Task3.model.Notebook;
 import Task3.model.Person;
 import Task3.view.View;
@@ -23,7 +24,15 @@ public class InputPerson {
         this.notebook = notebook;
     }
 
-    public void inputPerson() {
+    public void process() {
+        fillFields();
+
+        while (!addPersonToNotebook()) {
+            fillFields();
+        }
+    }
+
+    private void fillFields() {
         UtilityController utilityController = new UtilityController(sc, view);
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua")) ? REGEX_SURNAME_UKR : REGEX_SURNAME_LAT;
 
@@ -31,10 +40,21 @@ public class InputPerson {
         this.login = utilityController.inputStringValueWithScanner(LOGIN_DATA, REGEX_LOGIN);
     }
 
-    public void addPersonToNotebook(){
-        notebook.addPerson(new Person(surname, login));
-        for (Person p : notebook.getPersons()){
+    private boolean addPersonToNotebook() {
+        try {
+            notebook.createAndAddPerson(surname, login);
+        } catch (ExistingLoginException m) {
+            System.out.println(m);
+            System.out.println("Repeat please");
+            return false;
+        } catch (Exception m) {
+            System.out.println(m);
+            return false;
+        }
+
+        for (Person p : notebook.getPersons()) {
             System.out.println(p.toString());
         }
+        return true;
     }
 }

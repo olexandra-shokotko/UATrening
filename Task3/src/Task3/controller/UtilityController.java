@@ -13,6 +13,12 @@ public class UtilityController {
         this.view = view;
     }
 
+    /**
+     *
+     * @param message
+     * @param regex
+     * @return input string
+     */
     String inputStringValueWithScanner(String message, String regex) {
         String res;
         view.printStringInput(message);

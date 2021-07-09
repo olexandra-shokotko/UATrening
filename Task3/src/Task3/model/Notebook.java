@@ -17,7 +17,12 @@ public class Notebook {
         return persons;
     }
 
-    public void addPerson(Person person) {
-        persons.add(person);
+    public void createAndAddPerson(String surname, String login) throws ExistingLoginException{
+        for (Person p : persons)
+        {
+            if (p.getLogin().equals(login))
+                throw new ExistingLoginException("This login is not available");
+        }
+        persons.add(new Person(surname, login));
     }
 }
