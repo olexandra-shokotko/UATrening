@@ -10,12 +10,10 @@ public class ArrayIterator<T> implements Iterator<T> {
         this.values = values;
     }
 
-    @Override
     public boolean hasNext() {
         return index < values.length;
     }
 
-    @Override
     public T next() {
         return values[index++];
     }

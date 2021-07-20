@@ -9,7 +9,6 @@ public class CustomArrayList<T> implements ICustom<T> {
         values = (T[]) new Object[0];
     }
 
-    @Override
     public boolean add(T e) {
         try{
             T[] temp = values;
@@ -24,27 +23,22 @@ public class CustomArrayList<T> implements ICustom<T> {
         return false;
     }
 
-    @Override
     public void delete(int index) throws InvalidOperationException{
         throw new InvalidOperationException("Item cannot be deleted");
     }
 
-    @Override
     public T get(int index) {
         return values[index];
     }
 
-    @Override
     public int size() {
         return values.length;
     }
 
-    @Override
     public void update(int index, T e) throws InvalidOperationException{
         throw new InvalidOperationException("Item cannot be updated");
     }
 
-    @Override
     public Iterator<T> iterator() {
         return new ArrayIterator<T>(values);
     }
