@@ -1,11 +1,11 @@
 import java.util.Arrays;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
         int[] array = {10, -5, 0, 33, 666, -23, 123, 0};
-//        Supplier<Stream<int[]>> streamSupplier = () -> Stream.of(array);
-//        Stream<int[]> stream = Stream.of(array);
 
         //1
         IntStream stream1 = Arrays.stream(array);
@@ -13,7 +13,10 @@ public class Main {
 
         //2
         IntStream stream2 = Arrays.stream(array);
-
+        IntStream stream2new = Arrays.stream(array);
+        int minElement = stream2.min().getAsInt();
+        int minIndex = stream2new.boxed().collect(Collectors.toList()).indexOf(minElement);
+        System.out.println("\nSecond stream: " + "min element: " + minElement + ", index of min element: " + minIndex + "\n");
 
         //3
         IntStream stream3 = Arrays.stream(array);
