@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        #englishB , #ukrainianB {
+            display:inline-block;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Choose language</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,40 +14,20 @@
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 </head>
 <body ng-app="registration_form" ng-controller="AppCtrl">
-<div class="col-md-8 col-md-offset-2">
-    <h1>Choose language</h1>
-</div>
-<#--<div class="container" style="margin-top: 60px">-->
-<#--    <div class="row">-->
+
+<#--    <div style="width:800px; margin:0 auto;">-->
 <#--        <div class="col-md-8 col-md-offset-2">-->
-<#--            <h3 id="resultMessage">{{message}}</h3>-->
-<#--            <h2 class="page-header">Registration Form Demo</h2>-->
-<#--            <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate ng-submit="form.$valid && sendForm(auth)">-->
-<#--                <div class="form-group">-->
-<#--                    <label id="inputNameLabel" for="exampleInputName">First name</label>-->
-<#--                    <input type="text"-->
-<#--                           class="form-control"-->
-<#--                           id="exampleInputName"-->
-<#--                           placeholder="First Name"-->
-<#--                           required-->
-<#--                           ng-model="auth.names">-->
-<#--                </div>-->
-<#--                <div class="form-group">-->
-<#--                    <label id="inputLoginLabel" for="exampleInputLogin">Login</label>-->
-<#--                    <input type="text"-->
-<#--                           class="form-control"-->
-<#--                           id="exampleInputLogin"-->
-<#--                           placeholder="Login"-->
-<#--                           required-->
-<#--                           ng-model="auth.login">-->
-<#--                </div>-->
-<#--                <button id="sendForm" type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">-->
-<#--                    Submit-->
-<#--                </button>-->
-<#--            </form>-->
+<#--            <h1 style="display: inline-block">Choose language</h1>-->
+<#--        </div>-->
+<#--        <div align="center">-->
+<#--            <button type="button" th:onclick="|window.location.href='/main'|" id="englishB">-->
+<#--                English-->
+<#--            </button>-->
+<#--            <button type="button" th:onclick="|window.location.href='/main'|" id="ukrainianB">-->
+<#--                Ukrainian-->
+<#--            </button>-->
 <#--        </div>-->
 <#--    </div>-->
-<#--</div>-->
-<#--<script type="text/javascript" src="/js/reg_form1.js"></script>-->
+
 </body>
 </html>
