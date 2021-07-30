@@ -30,11 +30,11 @@
     <div style="width:800px; margin:0 auto;">
         <div id="locales" align="center">
             <button type="button"
-                    th:onclick="|window.location.href='/reg'|" id="regB"
+                    th:onclick="|window.location.href='@{/reg(lang=${lang})}'|" id="regB"
                     th:text="#{registration.button}">
             </button>
             <button type="button"
-                    th:onclick="|window.location.href='/login'|" id="loginB"
+                    th:onclick="|window.location.href='@{/login(lang=${lang})}'|" id="loginB"
                     th:text="#{login.button}">
             </button>
         </div>
